@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Logic Building Platform | Core Problem Solving</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <a href="/index.html" class="nav-brand">
+      <div class="brand-icon">&lt;/&gt;</div>
+      <div>
+        <span class="brand-title">DSA Logic Building Platform</span>
+        <span class="brand-subtitle">Core Problem Solving &amp; Progressive Hint Engine</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <span class="nav-badge">Sharon Cardoza Module</span>
+      <a href="/index.html" class="btn-secondary" style="padding: 0.4rem 0.9rem;">Problems</a>
+      <a href="/h2-console" target="_blank" class="btn-secondary" style="padding: 0.4rem 0.9rem;">H2 Console</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Master DSA Through Conceptual Logic</h1>
+        <p>
+          Tackle curated algorithmic problems with our progressive 4-level hint engine. Uncover intuition step-by-step from conceptual nudges to optimal space-time complexities.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-total-problems">7</div>
+          <div class="stat-label">Problems</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-total-topics">6</div>
+          <div class="stat-label">Topics</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-total-hints">28</div>
+          <div class="stat-label">Total Hints</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Toolbar -->
+    <section class="filter-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search problems by title (e.g., Two Sum, Reverse)...">
+      </div>
+      <div class="filters-group">
+        <select id="topicFilter" class="custom-select">
+          <option value="">All Topics / Categories</option>
+          <!-- Loaded dynamically -->
+        </select>
+
+        <select id="difficultyFilter" class="custom-select">
+          <option value="">All Difficulties</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+
+        <button id="clearFiltersBtn" class="btn-secondary">Reset Filters</button>
+      </div>
+    </section>
+
+    <!-- Problems Grid -->
+    <section>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.3rem; font-weight: 700;">Problems Catalog</h2>
+        <span id="problemCountText" style="color: var(--text-dim); font-size: 0.9rem;">Loading problems...</span>
+      </div>
+      <div id="problemsGrid" class="problems-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>DSA Logic Building Platform &bull; Core Problem Solving &amp; Progressive Hint Engine Module &bull; Sharon Cardoza</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

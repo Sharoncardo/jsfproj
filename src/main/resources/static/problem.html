@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Workspace | DSA Logic Building Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="/index.html" class="nav-brand">
+      <div class="brand-icon">&lt;/&gt;</div>
+      <div>
+        <span class="brand-title">DSA Logic Building Platform</span>
+        <span class="brand-subtitle">Core Problem Solving &amp; Progressive Hint Engine</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/index.html" class="btn-secondary">← Back to Problems</a>
+      <span class="nav-badge">Sharon Cardoza Module</span>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 1.25rem;">
+    <!-- Loading Overlay -->
+    <div id="loadingState" style="text-align: center; padding: 4rem; color: var(--text-dim);">
+      <h2>Loading Problem Details...</h2>
+    </div>
+
+    <!-- Main Workspace Content (Initially hidden until problem data loads) -->
+    <div id="workspaceContent" style="display: none;">
+      <!-- Breadcrumb and Quick Navigation -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <a href="/index.html" style="color: var(--text-dim); font-size: 0.9rem;">Problems</a>
+          <span style="color: var(--text-dim);">/</span>
+          <span id="breadcrumbTopic" style="color: var(--accent-cyan); font-size: 0.9rem; font-weight: 600;">Topic</span>
+          <span style="color: var(--text-dim);">/</span>
+          <span id="breadcrumbTitle" style="color: var(--text-main); font-size: 0.9rem; font-weight: 600;">Title</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span id="problemDifficultyBadge" class="difficulty-badge">Easy</span>
+        </div>
+      </div>
+
+      <div class="solve-workspace">
+        <!-- Left Column: Problem Details & Constraints -->
+        <section class="left-column">
+          <!-- Problem Statement Card -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <h1 id="problemTitle" class="panel-title" style="font-size: 1.5rem;">Two Sum</h1>
+              <span id="problemTopicBadge" style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600;">Topic</span>
+            </div>
+
+            <!-- Description -->
+            <div id="problemDescription" class="problem-desc-content">
+              Loading description...
+            </div>
+
+            <!-- Input / Output Format -->
+            <div class="format-block">
+              <div class="format-title">Input Format</div>
+              <div id="inputFormatText" class="format-code">nums = [2,7,11,15], target = 9</div>
+            </div>
+
+            <div class="format-block">
+              <div class="format-title">Output Format</div>
+              <div id="outputFormatText" class="format-code">[0,1]</div>
+            </div>
+
+            <!-- Examples -->
+            <div style="margin: 1.25rem 0;">
+              <h3 style="font-size: 1rem; margin-bottom: 0.6rem; color: var(--text-main);">Sample Example</h3>
+              <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                <div style="margin-bottom: 0.5rem;">
+                  <strong style="color: var(--text-muted); font-size: 0.82rem; text-transform: uppercase;">Input:</strong>
+                  <div id="sampleInputText" class="format-code" style="margin-top: 0.2rem; color: #93c5fd;">[2, 7, 11, 15], target = 9</div>
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                  <strong style="color: var(--text-muted); font-size: 0.82rem; text-transform: uppercase;">Output:</strong>
+                  <div id="sampleOutputText" class="format-code" style="margin-top: 0.2rem; color: #86efac;">[0, 1]</div>
+                </div>
+                <div>
+                  <strong style="color: var(--text-muted); font-size: 0.82rem; text-transform: uppercase;">Explanation:</strong>
+                  <div id="sampleExplanationText" style="color: #cbd5e1; font-size: 0.88rem; margin-top: 0.2rem;">nums[0] + nums[1] == 9, so we return [0, 1].</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Constraints -->
+            <div>
+              <h3 style="font-size: 1rem; margin-bottom: 0.6rem; color: var(--text-main);">Constraints</h3>
+              <div id="constraintsText" class="constraints-list">
+                Loading constraints...
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: Progressive Hint Engine & Code Solution Area -->
+        <section class="right-column">
+          <!-- Progressive Hint Engine Widget -->
+          <div class="hint-engine-card">
+            <div class="engine-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.3rem;">💡</span>
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 800; color: #f8fafc;">Progressive Conceptual Hint Engine</h3>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">Guided algorithmic logic revelation</p>
+                </div>
+              </div>
+              <span id="hintLevelBadge" class="engine-badge">Level 0 of 4</span>
+            </div>
+
+            <!-- Stepper Progress Bar -->
+            <div class="stepper-container">
+              <div class="stepper-progress-bg">
+                <div id="stepperProgressFill" class="stepper-progress-fill"></div>
+              </div>
+
+              <!-- Node 1 -->
+              <div id="stepNode1" class="step-node">
+                <div class="step-circle">1</div>
+                <div class="step-label">Nudge</div>
+              </div>
+
+              <!-- Node 2 -->
+              <div id="stepNode2" class="step-node">
+                <div class="step-circle">2</div>
+                <div class="step-label">Concept</div>
+              </div>
+
+              <!-- Node 3 -->
+              <div id="stepNode3" class="step-node">
+                <div class="step-circle">3</div>
+                <div class="step-label">Algorithm</div>
+              </div>
+
+              <!-- Node 4 -->
+              <div id="stepNode4" class="step-node">
+                <div class="step-circle">4</div>
+                <div class="step-label">Optimal &amp; O(N)</div>
+              </div>
+            </div>
+
+            <!-- Hint Engine Controls -->
+            <div class="hint-actions">
+              <button id="showNextHintBtn" class="btn-hint">
+                <span>⚡ Show Next Hint</span>
+              </button>
+              <button id="resetHintsBtn" class="btn-secondary" style="font-size: 0.85rem;">
+                🔄 Reset Hints
+              </button>
+              <span id="hintStatusMsg" style="font-size: 0.85rem; color: var(--text-muted); margin-left: auto;">
+                Click to unlock Level 1.
+              </span>
+            </div>
+
+            <!-- Stack of Unlocked Hints (Rendered strictly from backend) -->
+            <div id="unlockedHintsStack" class="unlocked-hints-stack">
+              <!-- Dynamically rendered unlocked hints -->
+            </div>
+          </div>
+
+          <!-- Code Solution & Language Selection Panel -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <div class="panel-title">
+                <span>💻 Code Solution Workspace</span>
+              </div>
+              <!-- Language Selection Tabs -->
+              <div class="language-tabs" id="languageTabs">
+                <button class="lang-tab" data-lang="cpp">C++</button>
+                <button class="lang-tab active" data-lang="java">Java</button>
+                <button class="lang-tab" data-lang="python">Python</button>
+              </div>
+            </div>
+
+            <div class="code-editor-area">
+              <textarea id="codeEditor" class="code-textarea" spellcheck="false" placeholder="Write or edit your DSA solution here..."></textarea>
+            </div>
+
+            <div class="editor-footer">
+              <button id="resetCodeBtn" class="btn-secondary" style="font-size: 0.85rem;">
+                Reset to Template
+              </button>
+              <button id="submitCodeBtn" class="btn-primary">
+                <span>▶ Run &amp; Submit Solution</span>
+              </button>
+            </div>
+
+            <!-- Submission Feedback Banner -->
+            <div id="submissionResultBanner" class="submission-result">
+              <div class="result-header">
+                <span id="resultStatusText" class="result-status">ACCEPTED</span>
+                <span id="resultMetricsText" class="result-metrics">Runtime: 32 ms | Memory: 39.4 MB</span>
+              </div>
+              <div id="resultFeedbackText" class="result-feedback">
+                All sample test cases passed successfully!
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>DSA Logic Building Platform &bull; Core Problem Solving &amp; Progressive Hint Engine Module &bull; Sharon Cardoza</p>
+  </footer>
+
+  <script src="/js/problem.js"></script>
+</body>
+</html>
