@@ -1,0 +1,752 @@
+
+/* =========================================================
+   SHARON'S PRACTICE WORKSPACE
+   All styles are scoped to this component.
+   ========================================================= */
+
+   .sharon-practice-workspace {
+    --bg-primary: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-surface-alt: #334155;
+    --bg-elevated: #283548;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --border-color: #334155;
+    --border-light: #475569;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-glow: rgba(59, 130, 246, 0.25);
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --easy-color: #10b981;
+    --easy-bg: rgba(16, 185, 129, 0.15);
+    --medium-color: #f59e0b;
+    --medium-bg: rgba(245, 158, 11, 0.15);
+    --hard-color: #ef4444;
+    --hard-bg: rgba(239, 68, 68, 0.15);
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Fira Code', 'JetBrains Mono', Consolas,
+      Monaco, monospace;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+  
+    width: 100%;
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+  
+  .sharon-practice-workspace *,
+  .sharon-practice-workspace *::before,
+  .sharon-practice-workspace *::after {
+    box-sizing: border-box;
+  }
+  
+  .sharon-practice-workspace button,
+  .sharon-practice-workspace input,
+  .sharon-practice-workspace select,
+  .sharon-practice-workspace textarea {
+    font: inherit;
+  }
+  
+  .sharon-practice-workspace button {
+    cursor: pointer;
+  }
+  
+  .sharon-practice-workspace a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .sharon-practice-workspace a:hover {
+    color: #60a5fa;
+  }
+  
+  /* Problem selector */
+  
+  .sharon-practice-workspace .practice-problem-select {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  
+  .sharon-practice-workspace .practice-problem-select label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .sharon-practice-workspace .practice-problem-select select {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.65rem 1rem;
+    color: var(--text-main);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    outline: none;
+  }
+  
+  .sharon-practice-workspace .practice-problem-select select:focus {
+    border-color: var(--primary);
+  }
+  
+  /* Error message */
+  
+  .sharon-practice-workspace [role="alert"] {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: var(--radius-sm);
+  }
+  
+  /* Breadcrumb */
+  
+  .sharon-practice-workspace .practice-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1rem 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  
+  /* Difficulty badges */
+  
+  .sharon-practice-workspace .difficulty-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .sharon-practice-workspace .difficulty-easy {
+    color: var(--easy-color);
+    background: var(--easy-bg);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  
+  .sharon-practice-workspace .difficulty-medium {
+    color: var(--medium-color);
+    background: var(--medium-bg);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  
+  .sharon-practice-workspace .difficulty-hard {
+    color: var(--hard-color);
+    background: var(--hard-bg);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+  
+  /* Main workspace layout */
+  
+  .sharon-practice-workspace .solve-workspace {
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: start;
+  }
+  
+  .sharon-practice-workspace .left-column,
+  .sharon-practice-workspace .right-column {
+    min-width: 0;
+  }
+  
+  /* Panels */
+  
+  .sharon-practice-workspace .panel-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  
+  .sharon-practice-workspace .panel-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .sharon-practice-workspace .panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  
+  .sharon-practice-workspace h1,
+  .sharon-practice-workspace h2,
+  .sharon-practice-workspace h3 {
+    color: var(--text-main);
+  }
+  
+  .sharon-practice-workspace h3 {
+    margin: 1rem 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  .sharon-practice-workspace p {
+    margin-top: 0.4rem;
+  }
+  
+  /* Problem details */
+  
+  .sharon-practice-workspace .problem-desc-content {
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    white-space: pre-line;
+    line-height: 1.7;
+  }
+  
+  .sharon-practice-workspace .format-block {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow-wrap: anywhere;
+  }
+  
+  .sharon-practice-workspace .format-title {
+    margin-bottom: 0.35rem;
+    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .sharon-practice-workspace .format-code {
+    color: #e2e8f0;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  
+  .sharon-practice-workspace .constraints-list {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    color: #cbd5e1;
+    background: rgba(30, 41, 59, 0.6);
+    border-left: 3px solid var(--accent-cyan);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+  
+  /* Progressive Hint Engine */
+  
+  .sharon-practice-workspace .hint-engine-card {
+    position: relative;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(180deg, #1e293b 0%, #172033 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-md);
+  }
+  
+  .sharon-practice-workspace .engine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sharon-practice-workspace .engine-header h3 {
+    margin-top: 0;
+  }
+  
+  .sharon-practice-workspace .engine-header p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  
+  .sharon-practice-workspace .engine-badge {
+    padding: 0.25rem 0.65rem;
+    color: #c4b5fd;
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  
+  /* Hint stepper */
+  
+  .sharon-practice-workspace .stepper-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    margin: 1.5rem 0 2rem;
+  }
+  
+  .sharon-practice-workspace .stepper-progress-bg {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    z-index: 1;
+    height: 4px;
+    background: var(--bg-surface-alt);
+  }
+  
+  .sharon-practice-workspace .stepper-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.35s ease;
+  }
+  
+  .sharon-practice-workspace .step-node {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+  
+  .sharon-practice-workspace .step-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    color: var(--text-dim);
+    background: var(--bg-surface-alt);
+    border: 2px solid var(--border-light);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+  
+  .sharon-practice-workspace .step-node.unlocked .step-circle {
+    color: white;
+    background: #3b82f6;
+    border-color: #60a5fa;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  }
+  
+  .sharon-practice-workspace .step-node.current .step-circle {
+    color: white;
+    background: #8b5cf6;
+    border-color: #a78bfa;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.6);
+    transform: scale(1.1);
+  }
+  
+  .sharon-practice-workspace .step-label {
+    max-width: 80px;
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .sharon-practice-workspace .step-node.unlocked .step-label {
+    color: var(--text-muted);
+  }
+  
+  .sharon-practice-workspace .step-node.current .step-label {
+    color: #c4b5fd;
+  }
+  
+  /* Hint actions */
+  
+  .sharon-practice-workspace .hint-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sharon-practice-workspace .hint-actions span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  
+  .sharon-practice-workspace .btn-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  
+  .sharon-practice-workspace .btn-hint:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  }
+  
+  .sharon-practice-workspace .btn-hint:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* Unlocked hint cards */
+  
+  .sharon-practice-workspace .unlocked-hints-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sharon-practice-workspace .hint-card {
+    padding: 1.2rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-sm);
+    animation: sharonSlideDown 0.3s ease-out;
+  }
+  
+  .sharon-practice-workspace .hint-card.level-1 {
+    border-left-color: #06b6d4;
+  }
+  
+  .sharon-practice-workspace .hint-card.level-2 {
+    border-left-color: #3b82f6;
+  }
+  
+  .sharon-practice-workspace .hint-card.level-3 {
+    border-left-color: #8b5cf6;
+  }
+  
+  .sharon-practice-workspace .hint-card.level-4 {
+    border-left-color: #ec4899;
+  }
+  
+  .sharon-practice-workspace .hint-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  
+  .sharon-practice-workspace .hint-card-title span {
+    color: var(--easy-color);
+    font-size: 0.75rem;
+  }
+  
+  .sharon-practice-workspace .hint-card-body {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    white-space: pre-line;
+  }
+  
+  .sharon-practice-workspace .complexity-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+  
+  .sharon-practice-workspace .complexity-pill {
+    padding: 0.25rem 0.65rem;
+    color: #f472b6;
+    background: rgba(236, 72, 153, 0.15);
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  
+  /* Code editor and language tabs */
+  
+  .sharon-practice-workspace .language-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+  }
+  
+  .sharon-practice-workspace .lang-tab {
+    padding: 0.45rem 1rem;
+    color: var(--text-dim);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  
+  .sharon-practice-workspace .lang-tab.active {
+    color: var(--text-main);
+    background: var(--bg-surface-alt);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .sharon-practice-workspace .code-editor-area {
+    position: relative;
+    margin: 1rem 0;
+  }
+  
+  .sharon-practice-workspace .code-textarea {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+    padding: 1rem;
+    color: #e2e8f0;
+    background: #0b1120;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+  }
+  
+  .sharon-practice-workspace .code-textarea:focus {
+    border-color: var(--primary);
+  }
+  
+  .sharon-practice-workspace .editor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  /* Buttons */
+  
+  .sharon-practice-workspace .btn-secondary {
+    padding: 0.65rem 1.1rem;
+    color: var(--text-main);
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .sharon-practice-workspace .btn-secondary:hover {
+    background: var(--border-light);
+  }
+  
+  .sharon-practice-workspace .btn-primary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .sharon-practice-workspace .btn-primary:hover:not(:disabled) {
+    color: white;
+    background: var(--primary-hover);
+    box-shadow: 0 2px 10px var(--primary-glow);
+  }
+  
+  .sharon-practice-workspace .btn-primary:disabled {
+    color: var(--text-dim);
+    background: var(--border-color);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  /* Submission result */
+  
+  .sharon-practice-workspace .submission-result {
+    display: block;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    animation: sharonSlideDown 0.25s ease-out;
+  }
+  
+  .sharon-practice-workspace .submission-result.accepted {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  
+  .sharon-practice-workspace .submission-result.failed {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+  
+  .sharon-practice-workspace .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .sharon-practice-workspace .result-status {
+    font-size: 1.05rem;
+    font-weight: 800;
+  }
+  
+  .sharon-practice-workspace .submission-result.accepted .result-status {
+    color: var(--easy-color);
+  }
+  
+  .sharon-practice-workspace .submission-result.failed .result-status {
+    color: var(--hard-color);
+  }
+  
+  .sharon-practice-workspace .result-metrics {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  
+  .sharon-practice-workspace .result-feedback {
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
+  
+  /* Scoped animation */
+  
+  @keyframes sharonSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive layout */
+  
+  @media (max-width: 1080px) {
+    .sharon-practice-workspace .solve-workspace {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sharon-practice-workspace .panel-card,
+    .sharon-practice-workspace .hint-engine-card {
+      padding: 1rem;
+    }
+  
+    .sharon-practice-workspace .engine-header {
+      align-items: flex-start;
+    }
+  
+    .sharon-practice-workspace .stepper-container {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+  
+    .sharon-practice-workspace .step-node {
+      flex: 0 0 65px;
+    }
+  
+    .sharon-practice-workspace .editor-footer {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  
+    .sharon-practice-workspace .editor-footer button {
+      width: 100%;
+    }
+  
+    .sharon-practice-workspace .result-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sharon-practice-workspace .practice-problem-select {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  
+    .sharon-practice-workspace .practice-problem-select select {
+      width: 100%;
+    }
+  
+    .sharon-practice-workspace .engine-header {
+      flex-direction: column;
+    }
+  
+    .sharon-practice-workspace .hint-actions {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .sharon-practice-workspace .language-tabs {
+      width: 100%;
+    }
+  
+    .sharon-practice-workspace .lang-tab {
+      flex: 1;
+      padding: 0.45rem 0.5rem;
+    }
+  }
+  

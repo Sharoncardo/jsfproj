@@ -102,25 +102,21 @@ public class SubmissionServiceImpl implements SubmissionService {
         Submission saved = submissionRepository.save(submission);
 
         // Integrate with Progress Tracking: update progress according to evaluation result
-        try {
-            ProgressStatus progressStatus = "ACCEPTED".equals(status)
-                    ? ProgressStatus.SOLVED
-                    : ProgressStatus.IN_PROGRESS;
+        // Integrate with Progress Tracking
+        ProgressStatus progressStatus = "ACCEPTED".equals(status)
+                ? ProgressStatus.SOLVED
+                : ProgressStatus.IN_PROGRESS;
 
-            RecordAttemptRequest attemptRequest = RecordAttemptRequest.builder()
-                    .problemId(problem.getSlug())
-                    .topic(problem.getTopicCode())
-                    .difficulty(problem.getDifficulty())
-                    .status(progressStatus)
-                    .timeSpentSeconds(Math.max(executionTime / 1000L, 5L))
-                    .incrementAttempts(true)
-                    .build();
+        RecordAttemptRequest attemptRequest = RecordAttemptRequest.builder()
+                .problemId(problem.getSlug())
+                .topic(problem.getTopicCode())
+                .difficulty(problem.getDifficulty())
+                .status(progressStatus)
+                .timeSpentSeconds(Math.max(executionTime / 1000L, 5L))
+                .incrementAttempts(true)
+                .build();
 
-            progressService.recordAttempt(userId, attemptRequest);
-        } catch (Exception e) {
-            log.error("Failed to automatically record progress attempt for user {} on problem {}: {}",
-                    userId, problem.getSlug(), e.getMessage());
-        }
+        progressService.recordAttempt(userId, attemptRequest);
 
         return toResponse(saved);
     }
@@ -142,8 +138,9 @@ public class SubmissionServiceImpl implements SubmissionService {
         Submission submission = submissionRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Submission", "id", id));
 
-        if (submission.getUser() != null && !submission.getUser().getId().equals(userId)) {
-            throw new ForbiddenException("You are not authorized to view this submission");
+        if (submission.getUser() == null || !submission.getUser().getId().equals(userId)) {
+            throw new ForbiddenException(
+                "You are not authorized to view this submission");
         }
 
         return toResponse(submission);
